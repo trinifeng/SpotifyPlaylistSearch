@@ -1,3 +1,9 @@
 <resources>
     <string name="app_name">SpotifyPlaylistSearch</string>
+
+    <!--    Resources for Spotify API-->
+    <string name="CLIENT_ID">577ce7ffb279424a94d4ad54e207687e</string>
+    <string name="REDIRECT_URI">com.example.spotifyplaylistsearch://callback</string>
+    <string name="shared_pref_key">Spotify</string>
+
 </resources>
