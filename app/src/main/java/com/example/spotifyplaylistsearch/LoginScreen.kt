@@ -41,7 +41,7 @@ class LoginScreen : AppCompatActivity() {
 
             //Open Login Activity web page
             AuthorizationClient.openLoginActivity(this, REQUEST_CODE, request)
-            Toast.makeText(this, "Login was opened", Toast.LENGTH_SHORT).show()
+            //Toast.makeText(this, "Login was opened", Toast.LENGTH_SHORT).show()
         }
     }
 
