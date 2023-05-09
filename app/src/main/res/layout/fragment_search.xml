@@ -10,5 +10,28 @@
         android:layout_gravity="center"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Go to playlist" />
+        android:backgroundTint="@color/design_default_color_primary"
+        android:height="50dp"
+        android:textColor="#FFFF"
+        android:text="@string/go_to_playlist" />
+
+    <EditText
+        android:id="@+id/song_name"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="100dp"
+        android:layout_gravity="center_horizontal"
+        android:ems="10"
+        android:inputType="textPersonName"
+        android:text="@string/song_title" />
+
+    <EditText
+        android:id="@+id/artist_name"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="200dp"
+        android:layout_gravity="center_horizontal"
+        android:ems="10"
+        android:inputType="textPersonName"
+        android:text="@string/artist" />
 </FrameLayout>

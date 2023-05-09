@@ -7,11 +7,13 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Button
+import android.widget.EditText
 
 class SearchFragment : Fragment() {
 
     lateinit var playlistButton: Button
-
+    lateinit var songTitle: EditText
+    lateinit var artistName: EditText
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
     }
@@ -23,6 +25,8 @@ class SearchFragment : Fragment() {
         // Inflate the layout for this fragment
         val view = inflater.inflate(R.layout.fragment_search, container, false)
         playlistButton = view.findViewById(R.id.playlist_button)
+        songTitle = view.findViewById(R.id.song_name)
+        artistName = view.findViewById(R.id.artist_name)
 
         playlistButton.setOnClickListener {
             val intent = Intent(activity, Playlists::class.java)

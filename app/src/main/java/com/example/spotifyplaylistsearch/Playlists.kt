@@ -35,7 +35,14 @@ class Playlists : AppCompatActivity() {
             Response.Listener<JSONObject?> {
                 myEditor = sharedPreferences.edit()
                 myEditor.apply {
-                    myEditor.putInt("playlist_limit", it.getInt("limit"))
+                    val playlistId = it.getJSONArray("items")[4].toString()
+                    val playlistName = it.getJSONArray("items")[6].toString()
+                    /* HOW TO IMPLEMENT:
+                    get playlist id
+                    add each song in the playlist by id and name by "GetPlaylistItems"
+                    */
+                    myEditor.putString("playlist_id", playlistId)
+                    myEditor.putString("playlist_name", playlistName)
                     commit()
                 }
             }, Response.ErrorListener {
