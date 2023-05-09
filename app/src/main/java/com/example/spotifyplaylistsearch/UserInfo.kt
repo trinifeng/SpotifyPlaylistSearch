@@ -1,10 +1,7 @@
 package com.example.spotifyplaylistsearch
 
 import android.content.SharedPreferences
-import com.android.volley.AuthFailureError
-import com.android.volley.RequestQueue
-import com.android.volley.Response
-import com.android.volley.VolleyError
+import com.android.volley.*
 import com.android.volley.toolbox.JsonObjectRequest
 import com.google.gson.Gson
 import org.json.JSONObject
@@ -17,6 +14,7 @@ class UserInfo(queue: RequestQueue,
     private var sharedPreferences: SharedPreferences
     private var queue: RequestQueue
     private lateinit var user: User
+    lateinit var myEditor: SharedPreferences.Editor
 
     init {
         this.queue = queue
@@ -28,26 +26,41 @@ class UserInfo(queue: RequestQueue,
     }
 
     operator fun get(callBack: VolleyCallBack) {
-        val jsonObjectRequest: JsonObjectRequest = object : JsonObjectRequest(URL, null,
-            Response.Listener<JSONObject> { response: JSONObject ->
+        // We use JsonObjectRequest method of volley library to
+        // retrieve a JSONObject response body at a given URL
+        val jsonObjectRequest: JsonObjectRequest = object : JsonObjectRequest(URL,
+            null, Response.Listener { response: JSONObject ->
+                // initialize the GSON library
                 val gson = Gson()
+
+                // serialize the response into user object
                 user = gson.fromJson(
                     response.toString(),
                     User::class.java
                 )
+
+                // indicate successful call
                 callBack.onSuccess()
-            },
-            Response.ErrorListener { error: VolleyError? -> get(callBack) }) {
+            }, Response.ErrorListener { error: VolleyError? -> get(callBack) }) {
+            // We need to add headers to the call for authorization
             @Throws(AuthFailureError::class)
             override fun getHeaders(): Map<String, String> {
                 val headers: MutableMap<String, String> = HashMap()
-                val token: String? = sharedPreferences.getString("token", "")
+
+                // get the auth token from shared preferences
+                val token = sharedPreferences.getString("token", "")
                 val auth = "Bearer $token"
+
+                // add it in headers
                 headers["Authorization"] = auth
                 return headers
             }
         }
+        // add the JSON object request call to
+        // the queue of volley library to make the call
         queue.add(jsonObjectRequest)
+
+
     }
 
 }
