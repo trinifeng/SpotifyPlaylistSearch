@@ -63,7 +63,7 @@ class LoginScreen : AppCompatActivity() {
                         apply()
                     }
                     Toast.makeText(this, "Spotify login successful", Toast.LENGTH_SHORT).show()
-                    Toast.makeText(this, response.accessToken.toString(), Toast.LENGTH_SHORT).show()
+                    //Toast.makeText(this, response.accessToken.toString(), Toast.LENGTH_SHORT).show()
                     /* val userService = UserInfo(requestQueue, sharedPreferences!!)
                     val callBack = object: VolleyCallBack {
                         override fun onSuccess() {
